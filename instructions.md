@@ -211,3 +211,37 @@ console.log(`Error while connecting to DB. Error: ${error}`)
       (to check how to debug, watch 1st ExamPreparation when 20 mins are remaining)
 
 19. Automatically login after register
+
+##########################################################################################
+
+## TODO's
+
+1. Map pages to navigation in both LoggedIn and LoggedOut state
+2. Add Creature model to mongoose
+3. Implement - All Posts Page
+   - show each creature with image, name, species, description
+   - add details butt to every creature
+4. Add details page (for Creatures)
+   - If no creatures "There are no posts yet..."
+   - If the user is the owner of the post should have "Edit" and "Delete" button
+   - If the user hasn't logged in => no buttons
+   - If the user is not the owner => vote button
+5. Vote button
+   - when clicked -> "Voted"
+   - redirect to the details page for the current creature
+   - show the email of the people voted
+   - if the user already has voted -> "Thanks for the Voting" and add the email of the vote people
+6. Add Creature (loggedin)
+   - on success redirect to all posts page
+7. Delete Creature
+   - on success redirect to all posts page
+8. Edit Creature
+   - on success redirect to current creature page
+9. Routes Guards - check
+10. Validations
+    - Login
+    - Register
+    - Animals
+11. Bonus -> Profile
+    -> Show my posts
+    -> if there are no posts - msg
