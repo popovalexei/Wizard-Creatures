@@ -12,7 +12,7 @@ router.get('/all', async (req, res) => {
 });
 
 //CREATE A POST view
-router.get('/create', (req, res) => {
+router.get('/create', isAuth, (req, res) => {
   res.render('post/create');
 });
 
