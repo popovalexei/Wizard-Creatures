@@ -7,7 +7,8 @@ exports.create = (creatureData) => Creature.create(creatureData);
 exports.getAll = () => Creature.find();
 
 //Get SINGLE creature(post)
-exports.getSingleCreature = (creatureId) => Creature.findById(creatureId);
+exports.getSingleCreature = (creatureId) =>
+  Creature.findById(creatureId).populate('votes');
 
 //EDIT creature(post)
 exports.update = (creatureId, creatureData) =>

@@ -52,10 +52,16 @@ router.get('/:creatureId/details', async (req, res) => {
   //checking if there is a user and if the user and owner is the same user
   const isOwner = user?._id === owner.toString();
   //checking if the user has voted
-  const hasVoted = creature.votes.some((v) => v?.toString() === user?._id);
+  const hasVoted = creature.votes.some((v) => v?._id.toString() === user?._id);
+  const joinedEmailsOfOwners = creature.votes.map((v) => v.email).join(', ');
 
   //rendering the details view and passing the creature, and boolean isOwner
-  res.render('post/details', { creature, isOwner, hasVoted });
+  res.render('post/details', {
+    creature,
+    isOwner,
+    hasVoted,
+    joinedEmailsOfOwners,
+  });
 });
 
 //EDIT post
