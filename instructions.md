@@ -221,8 +221,8 @@ console.log(`Error while connecting to DB. Error: ${error}`)
 3. Implement - All Posts Page
    - show each creature with image, name, species, description
    - add details butt to every creature
-4. Add details page (for Creatures)
    - If no creatures "There are no posts yet..."
+4. Add details page (for Creatures)
    - If the user is the owner of the post should have "Edit" and "Delete" button
    - If the user hasn't logged in => no buttons
    - If the user is not the owner => vote button
