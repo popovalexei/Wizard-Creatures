@@ -7,7 +7,7 @@ exports.create = (creatureData) => Creature.create(creatureData);
 exports.getAll = () => Creature.find();
 
 //Get SINGLE creature(post)
-exports.singleCreature = (creatureId) => Creature.findById(creatureId);
+exports.getSingleCreature = (creatureId) => Creature.findById(creatureId);
 
 //EDIT creature(post)
 exports.update = (creatureId, creatureData) =>
@@ -19,3 +19,18 @@ exports.delete = (creatureId) => Creature.findByIdAndDelete(creatureId);
 //Get Owner creatures (myCreatures)
 exports.getMyCreatures = (ownerId) =>
   Creature.find({ owner: ownerId }).populate('owner');
+
+//VOTE
+exports.addVotesToCreature = async (creatureId, userId) => {
+  const creature = await this.getSingleCreature(creatureId);
+  const isExistingInVotes = creature.votes.some(
+    (v) => v?.toString() === userId
+  );
+
+  if (isExistingInVotes) {
+    return;
+  }
+
+  creature.votes.push(userId);
+  return creature.save();
+};

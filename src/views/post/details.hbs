@@ -28,10 +28,19 @@
                 >Delete</a>
               {{else}}
                 <!-- logged in users, who have not yet voted-->
-                <a href='#' class='vote-up'>Vote</a>
+                {{#unless hasVoted}}
+                  <a
+                    href='/posts/{{creature._id}}/vote'
+                    class='vote-up'
+                  >Vote</a>
+                {{/unless}}
+
               {{/if}}
-              <!-- logged in user who has already voted-->
-              <p class='thanks-for-vote'>Thanks For Voting</p>
+
+              {{#if hasVoted}}
+                <!-- logged in user who has already voted-->
+                <p class='thanks-for-vote'>Thanks For Voting</p>
+              {{/if}}
 
             </div>
           {{/if}}
