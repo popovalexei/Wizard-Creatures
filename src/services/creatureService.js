@@ -15,3 +15,7 @@ exports.update = (creatureId, creatureData) =>
 
 //Delete creature(post)
 exports.delete = (creatureId) => Creature.findByIdAndDelete(creatureId);
+
+//Get Owner creatures (myCreatures)
+exports.getMyCreatures = (ownerId) =>
+  Creature.find({ owner: ownerId }).populate('owner');

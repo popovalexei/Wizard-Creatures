@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const creatureService = require('../services/creatureService.js');
 
-//ALL POSTS view
+//GET ALL POSTS view
 router.get('/all', async (req, res) => {
   //getting all the creatures from the mongodb
   const creatures = await creatureService.getAll().lean();
@@ -10,7 +10,7 @@ router.get('/all', async (req, res) => {
   res.render('post/all-posts', { creatures });
 });
 
-//CREATE POST view
+//CREATE A POST view
 router.get('/create', (req, res) => {
   res.render('post/create');
 });
@@ -33,8 +33,12 @@ router.post('/create', async (req, res) => {
 });
 
 //PROFILE
-router.get('/profile', (req, res) => {
-  res.render('post/profile');
+router.get('/profile', async (req, res) => {
+  const { user } = req;
+
+  const myCreatures = await creatureService.getMyCreatures(user?._id).lean();
+
+  res.render('post/profile', { myCreatures });
 });
 
 //POST DETAILS view
