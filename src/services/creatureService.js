@@ -1,14 +1,17 @@
 const Creature = require('../models/Creature.js');
 
-//CREATE a creature to mongodb
+//CREATE a creature(post) to mongodb
 exports.create = (creatureData) => Creature.create(creatureData);
 
-//Get ALL creatures from mongodb
+//Get ALL creatures(posts) from mongodb
 exports.getAll = () => Creature.find();
 
-//Get SINGLE creature
+//Get SINGLE creature(post)
 exports.singleCreature = (creatureId) => Creature.findById(creatureId);
 
-//EDIT creature
+//EDIT creature(post)
 exports.update = (creatureId, creatureData) =>
   Creature.findByIdAndUpdate(creatureId, creatureData);
+
+//Delete creature(post)
+exports.delete = (creatureId) => Creature.findByIdAndDelete(creatureId);

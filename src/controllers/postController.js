@@ -79,8 +79,10 @@ router.post('/:creatureId/edit', async (req, res) => {
 });
 
 //DELETE post
-router.get('/:creatureId/delete', (req, res) => {
+router.get('/:creatureId/delete', async (req, res) => {
   const { creatureId } = req.params;
+
+  await creatureService.delete(creatureId);
 
   res.redirect('/posts/all');
 });
