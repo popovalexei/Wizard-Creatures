@@ -217,7 +217,7 @@ console.log(`Error while connecting to DB. Error: ${error}`)
 ## TODO's
 
 1. Map pages to navigation in both LoggedIn and LoggedOut state
-2. Add Creature model to mongoose
+2. Add Creature model to mongoose --> models/Creature --> if you have model, you need a service as well / creatureService.js
 3. Implement - All Posts Page
    - show each creature with image, name, species, description
    - add details butt to every creature
