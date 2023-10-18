@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { isAuth } = require('../middlewares/authMiddleware.js');
 const creatureService = require('../services/creatureService.js');
+const { extractErrorMsgs } = require('../utils/errorHandler.js');
 
 //GET ALL POSTS view
 router.get('/all', async (req, res) => {
@@ -28,9 +29,13 @@ router.post('/create', async (req, res) => {
     owner: req.user,
   };
 
-  await creatureService.create(payload);
-
-  res.redirect('/posts/all');
+  try {
+    await creatureService.create(payload);
+    res.redirect('/posts/all');
+  } catch (error) {
+    const errorMessages = extractErrorMsgs(error);
+    res.status(404).render('post/create', { errorMessages });
+  }
 });
 
 //PROFILE
