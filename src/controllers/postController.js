@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { isAuth } = require('../middlewares/authMiddleware.js');
 const creatureService = require('../services/creatureService.js');
 
 //GET ALL POSTS view
@@ -33,7 +34,7 @@ router.post('/create', async (req, res) => {
 });
 
 //PROFILE
-router.get('/profile', async (req, res) => {
+router.get('/profile', isAuth, async (req, res) => {
   const { user } = req;
   const myCreatures = await creatureService.getMyCreatures(user?._id).lean();
 
